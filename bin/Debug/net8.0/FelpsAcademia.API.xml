@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FelpsAcademia.API</name>
+    </assembly>
+    <members>
+        <member name="M:FelpsAcademia.API.Controllers.AulasController.GetAula">
+            <summary>
+            Obter todas as Aulas cadastradas.
+            </summary>
+            <remarks>
+            Retorna um IEnumerable de aulas.
+            Exemplo de resposta:
+            
+            GET /api/Aulas
+            [
+                {
+                    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "nome": "Aula de Musculação",
+                    "descricao": "Aula focada no aumento de força.",
+                    "horaInicio": "2024-12-05T10:00:00",
+                    "horaFim": "2024-12-05T11:00:00"
+                },
+                {
+                    "id": "b8a885f6-b561-433e-8fba-4b21385a8d29",
+                    "nome": "Aula de Yoga",
+                    "descricao": "Aula focada em alongamentos e relaxamento.",
+                    "horaInicio": "2024-12-06T08:00:00",
+                    "horaFim": "2024-12-06T09:00:00"
+                }
+            ]
+            </remarks>
+            <response code="200">Retorna uma lista de todas as aulas cadastradas.</response>
+            <response code="400">Se ocorrer um erro.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.AulasController.GetAula(System.Guid)">
+            <summary>
+            Obter uma Aula específica pelo ID.
+            </summary>
+            <param name="id">ID da Aula.</param>
+            <returns>Retorna uma aula se encontrada.</returns>
+            <response code="200">Retorna a aula encontrada.</response>
+            <response code="404">Se a aula não for encontrada.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.AulasController.PutAula(System.Guid,FelpsAcademia.API.Entities.Aula)">
+            <summary>
+            Atualizar uma Aula existente.
+            </summary>
+            <param name="id">ID da Aula.</param>
+            <param name="aula">Objeto Aula com os dados atualizados.</param>
+            <returns>Retorna uma resposta sem conteúdo.</returns>
+            <response code="204">Aula atualizada com sucesso.</response>
+            <response code="400">Se o ID não coincidir com o da aula.</response>
+            <response code="404">Se a aula não for encontrada.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.AulasController.PostAula(FelpsAcademia.API.Entities.Aula)">
+            <summary>
+            Criar uma nova Aula.
+            </summary>
+            <param name="aula">Dados da nova aula.</param>
+            <returns>Retorna a Aula criada.</returns>
+            <response code="201">Aula criada com sucesso.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.AulasController.DeleteAula(System.Guid)">
+            <summary>
+            Excluir uma Aula pelo ID.
+            </summary>
+            <param name="id">ID da Aula a ser excluída.</param>
+            <returns>Retorna uma resposta sem conteúdo.</returns>
+            <response code="204">Aula excluída com sucesso.</response>
+            <response code="404">Se a aula não for encontrada.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.InstrutoresController.GetInstrutor">
+            <summary>
+            Obter todos os Instrutores cadastrados.
+            </summary>
+            <remarks>
+                Retorno:
+                
+                GETALL
+                [
+                    {  
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "nome": "João Silva",
+                        "email": "joao@exemplo.com",
+                        "telefone": "(61) 99999-9999",
+                        "especialidade": "Musculação"
+                    }    
+                ]
+            </remarks>
+            <response code="200">Retorna uma lista de instrutores cadastrados.</response>
+            <response code="400">Se ocorrer um erro.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.InstrutoresController.GetInstrutor(System.Guid)">
+            <summary>
+            Obter um Instrutor, passando o Id como parâmetro.
+            </summary>
+            <param name="id">ID do Instrutor</param>
+            <returns>Um instrutor específico</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.InstrutoresController.PutInstrutor(System.Guid,FelpsAcademia.API.Entities.Instrutor)">
+            <summary>
+            Atualizar os dados de um Instrutor com base no ID.
+            </summary>
+            <param name="id">ID do Instrutor</param>
+            <param name="instrutor">Dados atualizados do instrutor</param>
+            <returns>Retorna um código de status NoContent (204) em caso de sucesso</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.InstrutoresController.PostInstrutor(FelpsAcademia.API.Entities.Instrutor)">
+            <summary>
+            Cadastrar um novo Instrutor.
+            </summary>
+            <param name="instrutor">Dados do Instrutor a ser cadastrado</param>
+            <returns>Retorna um código de status Created (201) com o objeto do Instrutor criado</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.InstrutoresController.DeleteInstrutor(System.Guid)">
+            <summary>
+            Excluir um Instrutor pelo ID.
+            </summary>
+            <param name="id">ID do Instrutor a ser excluído</param>
+            <returns>Retorna um código de status NoContent (204) em caso de sucesso</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PagamentosController.GetPagamento">
+            <summary>
+            Obter todos os pagamentos registrados.
+            </summary>
+            <remarks>
+                Retorno:
+                [
+                    {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "valor": 150.00,
+                        "dataPagamento": "2024-12-01T10:00:00",
+                        "formaPagamento": "Cartão de Crédito",
+                        "usuarioId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+                    }
+                ]
+            </remarks>
+            <response code="200">Retorna a lista de pagamentos.</response>
+            <response code="400">Se ocorrer um erro ao processar a requisição.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PagamentosController.GetPagamento(System.Guid)">
+            <summary>
+            Obter um pagamento específico por ID.
+            </summary>
+            <param name="id">ID do pagamento</param>
+            <returns>Retorna os detalhes de um pagamento específico</returns>
+            <response code="200">Retorna o pagamento encontrado.</response>
+            <response code="404">Se o pagamento não for encontrado.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PagamentosController.PutPagamento(System.Guid,FelpsAcademia.API.Entities.Pagamento)">
+            <summary>
+            Atualizar os dados de um pagamento existente.
+            </summary>
+            <param name="id">ID do pagamento</param>
+            <param name="pagamento">Dados do pagamento a ser atualizado</param>
+            <returns>Retorna um código de status NoContent (204) se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PagamentosController.PostPagamento(FelpsAcademia.API.Entities.Pagamento)">
+            <summary>
+            Criar um novo pagamento.
+            </summary>
+            <param name="pagamento">Dados do pagamento a ser criado</param>
+            <returns>Retorna um código de status Created (201) com o objeto do pagamento criado</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PagamentosController.DeletePagamento(System.Guid)">
+            <summary>
+            Excluir um pagamento existente por ID.
+            </summary>
+            <param name="id">ID do pagamento a ser excluído</param>
+            <returns>Retorna um código de status NoContent (204) em caso de sucesso.</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PlanosController.GetPlano">
+            <summary>
+            Obter todos os planos registrados.
+            </summary>
+            <remarks>
+                Retorno:
+                [
+                    {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "nome": "Plano Ouro",
+                        "valor": 250.00,
+                        "descricao": "Plano com acesso a todos os serviços.",
+                        "periodo": "Mensal"
+                    }
+                ]
+            </remarks>
+            <response code="200">Retorna a lista de planos.</response>
+            <response code="400">Se ocorrer um erro ao processar a requisição.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PlanosController.GetPlano(System.Guid)">
+            <summary>
+            Obter um plano específico por ID.
+            </summary>
+            <param name="id">ID do plano</param>
+            <returns>Retorna os detalhes de um plano específico</returns>
+            <response code="200">Retorna o plano encontrado.</response>
+            <response code="404">Se o plano não for encontrado.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PlanosController.PutPlano(System.Guid,FelpsAcademia.API.Entities.Plano)">
+            <summary>
+            Atualizar os dados de um plano existente.
+            </summary>
+            <param name="id">ID do plano</param>
+            <param name="plano">Dados do plano a ser atualizado</param>
+            <returns>Retorna um código de status NoContent (204) se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PlanosController.PostPlano(FelpsAcademia.API.Entities.Plano)">
+            <summary>
+            Criar um novo plano.
+            </summary>
+            <param name="plano">Dados do plano a ser criado</param>
+            <returns>Retorna um código de status Created (201) com o objeto do plano criado</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.PlanosController.DeletePlano(System.Guid)">
+            <summary>
+            Excluir um plano existente por ID.
+            </summary>
+            <param name="id">ID do plano a ser excluído</param>
+            <returns>Retorna um código de status NoContent (204) em caso de sucesso.</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.TreinosController.GetTreino">
+            <summary>
+            Obter todos os treinos registrados.
+            </summary>
+            <remarks>
+            Retorna a lista completa de treinos registrados na academia.
+            </remarks>
+            <response code="200">Retorna a lista de treinos.</response>
+            <response code="400">Se ocorrer um erro ao processar a requisição.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.TreinosController.GetTreino(System.Guid)">
+            <summary>
+            Obter um treino específico por ID.
+            </summary>
+            <param name="id">ID do treino</param>
+            <returns>Retorna os detalhes de um treino específico</returns>
+            <response code="200">Retorna o treino encontrado.</response>
+            <response code="404">Se o treino não for encontrado.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.TreinosController.PutTreino(System.Guid,FelpsAcademia.API.Entities.Treino)">
+            <summary>
+            Atualizar os dados de um treino existente.
+            </summary>
+            <param name="id">ID do treino</param>
+            <param name="treino">Dados do treino a ser atualizado</param>
+            <returns>Retorna um código de status NoContent (204) se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.TreinosController.PostTreino(FelpsAcademia.API.Entities.Treino)">
+            <summary>
+            Criar um novo treino.
+            </summary>
+            <param name="treino">Dados do treino a ser criado</param>
+            <returns>Retorna um código de status Created (201) com o objeto do treino criado</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.TreinosController.DeleteTreino(System.Guid)">
+            <summary>
+            Excluir um treino existente por ID.
+            </summary>
+            <param name="id">ID do treino a ser excluído</param>
+            <returns>Retorna um código de status NoContent (204) em caso de sucesso.</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.UsuariosController.GetUsuario">
+            <summary>
+            Obter todos os usuários registrados.
+            </summary>
+            <remarks>
+            Retorna a lista completa de usuários registrados na academia.
+            </remarks>
+            <response code="200">Retorna a lista de usuários.</response>
+            <response code="400">Se ocorrer um erro ao processar a requisição.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.UsuariosController.GetUsuario(System.Guid)">
+            <summary>
+            Obter um usuário específico por ID.
+            </summary>
+            <param name="id">ID do usuário</param>
+            <returns>Retorna os detalhes de um usuário específico</returns>
+            <response code="200">Retorna o usuário encontrado.</response>
+            <response code="404">Se o usuário não for encontrado.</response>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.UsuariosController.PutUsuario(System.Guid,FelpsAcademia.API.Entities.Usuario)">
+            <summary>
+            Atualizar os dados de um usuário existente.
+            </summary>
+            <param name="id">ID do usuário</param>
+            <param name="usuario">Dados do usuário a ser atualizado</param>
+            <returns>Retorna um código de status NoContent (204) se a atualização for bem-sucedida.</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.UsuariosController.PostUsuario(FelpsAcademia.API.Entities.Usuario)">
+            <summary>
+            Criar um novo usuário.
+            </summary>
+            <param name="usuario">Dados do usuário a ser criado</param>
+            <returns>Retorna um código de status Created (201) com o objeto do usuário criado</returns>
+        </member>
+        <member name="M:FelpsAcademia.API.Controllers.UsuariosController.DeleteUsuario(System.Guid)">
+            <summary>
+            Excluir um usuário existente por ID.
+            </summary>
+            <param name="id">ID do usuário a ser excluído</param>
+            <returns>Retorna um código de status NoContent (204) em caso de sucesso.</returns>
+        </member>
+        <member name="T:FelpsAcademia.API.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:FelpsAcademia.API.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FelpsAcademia.API.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FelpsAcademia.API.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
